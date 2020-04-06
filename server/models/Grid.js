@@ -17,14 +17,19 @@ class Grid extends GridBase {
 		super(width, height, grid);
 
 		const biggerSide = height > width ? height : width;
+		const smallerSide = height < width ? height : width;
 		this.words = randWords({
 			min: biggerSide,
 			max: biggerSide,
-			maxLength: Math.floor(biggerSide / 2),
+			maxLength: smallerSide,
 		});
 
 		this.grid = this.placeWordsOnGrid([...this.words], [...this.grid]);
+		// check if the grid was successfuly filled with the words
 		if (!this.grid) throw new Error('Could not place words on the grid!');
+		// the grid was successfuly filled with the words therefore now we need
+		// to fill the empty cells with random characters
+		else this.grid = this.fillEmptyGridCells();
 	}
 
 	placeWordsOnGrid(words, grid) {
@@ -58,9 +63,16 @@ class Grid extends GridBase {
 			}
 		}
 
-		// failed to place word so pushing it back and trying again
+		// failed to place word so pushing it back before returning
 		words.push(word);
 		return null;
+	}
+
+	fillEmptyGridCells() {
+		return this.grid.map(
+			(cell) =>
+				cell || String.fromCharCode(Math.floor(Math.random() * 25 + 97))
+		);
 	}
 
 	tryPlacingWord(word, grid, index, direction) {

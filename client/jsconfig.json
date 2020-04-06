@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"baseUrl": ".",
+		"jsx": "react",
+		"paths": {
+			"common/*": ["../common/*"]
+		}
+	}
+}

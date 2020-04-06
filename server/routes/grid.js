@@ -9,7 +9,14 @@ router.get('/new', (req, res) => {
 		const heigth = parseInt(req.query.height, 10);
 
 		const grid = new Grid(width, heigth);
-		res.send({ words: grid.words, grid: grid.grid });
+		res.send({
+			words: grid.words,
+			grid: {
+				height: grid.height,
+				width: grid.width,
+				values: grid.getGridIn2D(),
+			},
+		});
 	} catch (err) {
 		res.send({ error: err.message });
 	}

@@ -1,12 +1,9 @@
-const MAX_WIDTH = 5;
-const MAX_HEIGTH = 5;
+const MIN_WIDTH = 6;
+const MIN_HEIGTH = 6;
 
 class Grid {
 	constructor(width, height, grid = null) {
-		console.log(width);
-		console.log(height);
-		console.log('\n');
-		if (!width || !height || width < MAX_WIDTH || height < MAX_HEIGTH)
+		if (!width || !height || width < MIN_WIDTH || height < MIN_HEIGTH)
 			throw new Error(`Width/Height canno't be less than ${MAX_WIDTH}.`);
 
 		this.width = width;
@@ -15,27 +12,12 @@ class Grid {
 		this.grid = grid || new Array(width * height);
 	}
 
-	createEmptyGrid(width, height) {
-		let grid = [];
-		for (let w = 0; w < width; w++) {
-			grid[w] = [];
-			for (let h = 0; h < height; h++) {
-				grid[w][h] = null;
-			}
-		}
-		return grid;
-	}
-
-	get2Dgrid() {
+	getGridIn2D() {
 		const grid = [];
 		for (let w = 0; w < this.width; w++) {
 			grid[w] = [];
 			for (let h = 0; h < this.height; h++) {
-				row.push(
-					this.grid[this.getIndex(w, h)]
-						? this.grid[this.getIndex(w, h)]
-						: ' '
-				);
+				grid[w].push(this.grid[this.getIndex(w, h)]);
 			}
 		}
 		return grid;
