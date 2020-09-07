@@ -1,0 +1,47 @@
+.line {
+	padding: 0px;
+	margin: 0px;
+	height: 35px;
+	line-height: 1px;
+	opacity: 0.5;
+	position: absolute;
+	transform-origin: center left;
+	pointer-events: none;
+}
+
+.line.available-path,
+.available-path::before,
+.available-path::after {
+	background-color: lightgreen;
+}
+
+.line.unavailable-path,
+.unavailable-path::before,
+.unavailable-path::after {
+	background-color: lightcoral;
+}
+
+.line.selected,
+.selected::before,
+.selected::after {
+	background-color: lightblue;
+}
+
+.line::before,
+.line::after {
+	content: '';
+	display: inline-block;
+	position: absolute;
+	width: 20px;
+	height: 35px;
+}
+
+.line::before {
+	right: 100%;
+	border-radius: 20px 0 0 20px;
+}
+
+.line::after {
+	left: 100%;
+	border-radius: 0 20px 20px 0;
+}

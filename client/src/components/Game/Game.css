@@ -1,0 +1,4 @@
+.game-wrapper {
+	display: flex;
+	flex-flow: row nowrap;
+}

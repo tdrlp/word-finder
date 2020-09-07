@@ -1,0 +1,21 @@
+body {
+	font-family: 'Work Sans', sans-serif;
+}
+
+.app-wrapper {
+	overflow: hidden;
+	display: flex;
+	flex-flow: column nowrap;
+	padding: 10px;
+	margin-left: 40px;
+}
+
+.noselect {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+                        supported by Chrome, Opera and Firefox */
+}

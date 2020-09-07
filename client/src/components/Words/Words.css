@@ -1,0 +1,32 @@
+.words-wrapper {
+	float: left;
+	width: 150px;
+	margin: 20px;
+}
+
+.words-wrapper .title {
+	font-weight: bold;
+	font-size: 34px;
+}
+
+.word {
+	padding: 3px 0;
+}
+
+.word:not(.selected)::before {
+	content: '';
+	border: solid black;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 3px;
+	margin-right: 8px;
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+}
+.word:not(.selected):hover {
+	text-decoration-line: underline;
+}
+
+.selected {
+	color: lightgray;
+}

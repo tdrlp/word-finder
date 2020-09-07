@@ -1,0 +1,10 @@
+.grid-wrapper {
+	border: 3px solid black;
+	border-radius: 10px;
+	float: left;
+}
+
+.grid-wrapper table {
+	border-collapse: separate;
+	border-spacing: 0px;
+}

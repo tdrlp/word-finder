@@ -1,25 +1,11 @@
 const express = require('express');
-const Grid = require('../models/Grid');
-
+const _ = require('lodash');
 const router = express.Router();
 
-router.get('/new', (req, res) => {
-	try {
-		const width = parseInt(req.query.width, 10);
-		const heigth = parseInt(req.query.height, 10);
+const gridController = require('../controllers/gridController');
+const gridValidator = require('../validators/gridValidator');
 
-		const grid = new Grid(width, heigth);
-		res.send({
-			words: grid.words,
-			grid: {
-				height: grid.height,
-				width: grid.width,
-				values: grid.getGridIn2D(),
-			},
-		});
-	} catch (err) {
-		res.send({ error: err.message });
-	}
-});
+router.get('/new', gridValidator.newGrid, gridController.newGrid);
+router.post('/select', gridValidator.selectWord, gridController.selectWord);
 
 module.exports = router;
