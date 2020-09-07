@@ -2,5 +2,5 @@
 # unless otherwise overridden by more specific contexts.
 [build]
     command = "npm run build"
-    publish="client/build"
-    base = "client"
+    publish="build/"
+    base = "client/"
