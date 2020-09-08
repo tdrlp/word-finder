@@ -2,7 +2,7 @@ import React from 'react';
 import './Words.css';
 
 const Words = ({ words }) => {
-	return (
+	return words.length !== 0 ? (
 		<div className='words-wrapper noselect'>
 			<div className='title'>Words</div>
 			{words.map((word, i) => (
@@ -14,7 +14,7 @@ const Words = ({ words }) => {
 				</div>
 			))}
 		</div>
-	);
+	) : null;
 };
 
 export default Words;
