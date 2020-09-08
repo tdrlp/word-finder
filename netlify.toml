@@ -4,6 +4,3 @@
     command = "npm run build"
     publish="build/"
     base = "client/"
-
-[context.production]
-    environment = { API_HOST = "https://isoyute-word-finder-server.herokuapp.com:5050" }

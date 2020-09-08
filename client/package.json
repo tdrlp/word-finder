@@ -14,12 +14,11 @@
 		"react-scripts": "3.4.0"
 	},
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
+		"start": "REACT_APP_API_HOST=http://localhost:5050 react-scripts start",
+		"build": "REACT_APP_API_HOST=https://isoyute-word-finder-server.herokuapp.com:5050 react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
-	"proxy": "http://localhost:5050",
 	"eslintConfig": {
 		"extends": "react-app"
 	},
