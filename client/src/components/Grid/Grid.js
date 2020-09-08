@@ -6,6 +6,7 @@ import SelectionLines from '../SelectionLines/SelectionLines';
 import './Grid.css';
 
 const CELL_SIZE = 50;
+const API_HOST = process.env.API_HOST || '';
 
 const getCell = (x, y, offset) => {
 	return {
@@ -34,7 +35,7 @@ const Grid = ({ grid, setGrid, words, setWords }) => {
 	}, []);
 
 	useEffect(() => {
-		axios.get('/api/grid/new?width=15').then((res) => {
+		axios.get(`${API_HOST}/api/grid/new?width=15`).then((res) => {
 			setGrid(res.data.grid);
 			setWords(res.data.words);
 		});
@@ -83,7 +84,7 @@ const Grid = ({ grid, setGrid, words, setWords }) => {
 		}
 
 		axios
-			.post('/api/grid/select', {
+			.post(`${API_HOST}/api/grid/select`, {
 				words,
 				grid,
 				selection: {
