@@ -3,6 +3,7 @@ import _ from 'lodash';
 import axios from 'axios';
 import Row from './Row';
 import SelectionLines from '../SelectionLines/SelectionLines';
+import Spinner from '../Spinner/Spinner';
 import './Grid.css';
 
 const CELL_SIZE = 50;
@@ -23,6 +24,7 @@ const getCellCentre = ({ row, col }, offset) => {
 };
 
 const Grid = ({ grid, setGrid, words, setWords }) => {
+	const [loading, setLoading] = useState(true);
 	const [mouseDown, setMouseDown] = useState(false);
 	const [fromCell, setFromCell] = useState({ from: null, to: null });
 	const [toCell, setToCell] = useState({ from: null, to: null });
@@ -31,13 +33,16 @@ const Grid = ({ grid, setGrid, words, setWords }) => {
 	const gridRef = useRef(null);
 
 	useLayoutEffect(() => {
-		setGridOffset(gridRef.current.getBoundingClientRect());
-	}, []);
+		if (gridRef.current) {
+			setGridOffset(gridRef.current.getBoundingClientRect());
+		}
+	}, [loading]);
 
 	useEffect(() => {
 		axios.get(`${API_HOST}/api/grid/new?width=15`).then((res) => {
 			setGrid(res.data.grid);
 			setWords(res.data.words);
+			setLoading(false);
 		});
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -103,7 +108,9 @@ const Grid = ({ grid, setGrid, words, setWords }) => {
 			});
 	};
 
-	return (
+	return loading ? (
+		<Spinner />
+	) : (
 		<div ref={gridRef} className='grid-wrapper'>
 			{gridOffset && (
 				<SelectionLines
