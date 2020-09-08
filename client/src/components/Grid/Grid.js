@@ -6,7 +6,6 @@ import SelectionLines from '../SelectionLines/SelectionLines';
 import './Grid.css';
 
 const CELL_SIZE = 50;
-const API_HOST = process.env.API_HOST || '';
 
 const getCell = (x, y, offset) => {
 	return {
@@ -35,10 +34,12 @@ const Grid = ({ grid, setGrid, words, setWords }) => {
 	}, []);
 
 	useEffect(() => {
-		axios.get(`${API_HOST}/api/grid/new?width=15`).then((res) => {
-			setGrid(res.data.grid);
-			setWords(res.data.words);
-		});
+		axios
+			.get(`${process.env.API_HOST || ''}/api/grid/new?width=15`)
+			.then((res) => {
+				setGrid(res.data.grid);
+				setWords(res.data.words);
+			});
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -84,7 +85,7 @@ const Grid = ({ grid, setGrid, words, setWords }) => {
 		}
 
 		axios
-			.post(`${API_HOST}/api/grid/select`, {
+			.post(`${process.env.API_HOST || ''}/api/grid/select`, {
 				words,
 				grid,
 				selection: {
