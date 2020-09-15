@@ -122,9 +122,9 @@ const Grid = ({ grid, setGrid, words, setWords }) => {
 				/>
 			)}
 			<table
-				onMouseDown={(e) => mouseDownHandler(e)}
-				onMouseMove={(e) => mouseMoveHandler(e)}
-				onMouseUp={(e) => mouseUpHandler(e)}
+				onMouseDown={mouseDownHandler}
+				onMouseMove={mouseMoveHandler}
+				onMouseUp={mouseUpHandler}
 			>
 				<tbody>
 					{grid.gridIn2D.map((row, i) => (
